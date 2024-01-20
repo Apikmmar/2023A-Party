@@ -80,7 +80,7 @@ public class HostPartyInfo extends AppCompatActivity {
                     fullNameText.setText(read_full_name.toUpperCase());
                     addressText.setText(read_address_name.toUpperCase());
                     ageText.setText(String.valueOf(read_current_age));
-                    hpText.setText(String.valueOf(read_current_hp));
+                    hpText.setText("0" +  String.valueOf(read_current_hp));
                     roleText.setText(read_user_role.toUpperCase());
                 }
             }
