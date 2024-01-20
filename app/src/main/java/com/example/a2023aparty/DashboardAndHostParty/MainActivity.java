@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         buttonUserHome = findViewById(R.id.gotouserhome);
         buttonUserHome.setBackgroundColor(getResources().getColor(R.color.yellowdes));
 
-        lightTextView = findViewById(R.id.lightTextView); // Assuming you have a TextView with this ID in your layout
+        lightTextView = findViewById(R.id.lightTextView);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // Not needed for light sensor, but required by the interface
     }
 
     public void onImageViewHostPage(View view) {
