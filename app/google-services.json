@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "183711361083",
+    "firebase_url": "https://a-party-db-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "a-party-db",
+    "storage_bucket": "a-party-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183711361083:android:071aa48edc65c45ab2541e",
+        "android_client_info": {
+          "package_name": "com.example.a2023aparty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWG2jbZOvI3Kd4lxU8kyUra-sqLGUOPPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
