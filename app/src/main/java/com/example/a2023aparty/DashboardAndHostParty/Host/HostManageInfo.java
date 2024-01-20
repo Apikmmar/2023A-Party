@@ -1,14 +1,15 @@
 package com.example.a2023aparty.DashboardAndHostParty.Host;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2023aparty.HostData;
 import com.example.a2023aparty.R;
@@ -139,5 +140,14 @@ public class HostManageInfo extends AppCompatActivity {
 
             updateHostInfo.setValue(hostData);
         }
+    }
+
+    public void onImageViewHostImage(View view) {
+        String instagramUrl = "http://instagram.com/_u/apik_aa";
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(instagramUrl));
+
+        startActivity(intent);
     }
 }

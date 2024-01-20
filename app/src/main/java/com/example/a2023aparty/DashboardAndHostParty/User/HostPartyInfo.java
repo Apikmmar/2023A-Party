@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -92,6 +93,11 @@ public class HostPartyInfo extends AppCompatActivity {
     }
 
     public void onImageViewHostImage(View view) {
-        Toast.makeText(this, "ImageView Clicked!", Toast.LENGTH_SHORT).show();
+        String instagramUrl = "http://instagram.com/_u/apik_aa";
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(instagramUrl));
+
+        startActivity(intent);
     }
 }

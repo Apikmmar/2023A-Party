@@ -47,8 +47,7 @@ public class HostSongAdapter extends RecyclerView.Adapter<HostSongAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView viewSongName;
-        private TextView viewArtistName;
+        private TextView viewSongName, viewArtistName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
