@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">2023A Party</string>
+    <string-array name="events">
+        <item>Annual Dinner</item>
+        <item>Carnival</item>
+        <item>Treasure Hunt</item>
+    </string-array>
 </resources>

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.a2023aparty.DashboardAndHostParty.MainActivity;
+import com.example.a2023aparty.PartyAndLocationInfo.User.MultiLocationHome;
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.RequestAndFeedback.User.GuestFeedback;
 
@@ -74,7 +75,7 @@ public class UserHome extends AppCompatActivity implements SensorEventListener {
         buttonLocInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent a = new Intent(UserHome.this, MainActivity.class);
+                Intent a = new Intent(UserHome.this, MultiLocationHome.class);
                 startActivity(a);
             }
         });

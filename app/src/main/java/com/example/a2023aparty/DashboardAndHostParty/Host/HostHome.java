@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a2023aparty.PartyAndLocationInfo.Host.picLocationInfo;
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.RequestAndFeedback.Host.HostFeedback;
 import com.example.a2023aparty.RequestAndFeedback.Host.HostViewRequest;
@@ -68,7 +69,7 @@ public class HostHome extends AppCompatActivity implements SensorEventListener {
         buttonPartyInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent a = new Intent(HostHome.this, HostManageInfo.class);
+                Intent a = new Intent(HostHome.this, picLocationInfo.class);
                 startActivity(a);
             }
         });
