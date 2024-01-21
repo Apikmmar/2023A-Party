@@ -13,6 +13,39 @@
         android:theme="@style/Theme._2023AParty"
         tools:targetApi="31">
         <activity
+            android:name=".RequestAndFeedback.User.UpdateDeleteRequest"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.RequestList"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.User.RegistrationSuccess"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.User.PartyRequest"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.Host.HostViewRequest"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.Host.HostViewFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.Host.HostUpdateDeleteRequest"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.Host.HostFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.Host.HostAddRequest"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.User.GuestFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".RequestAndFeedback.User.GuestAddRequest"
+            android:exported="false" />
+        <activity
             android:name=".DashboardAndHostParty.Host.HostEditFavSong"
             android:exported="false" />
         <activity

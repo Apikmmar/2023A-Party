@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a2023aparty.R;
+import com.example.a2023aparty.RequestAndFeedback.Host.HostFeedback;
+import com.example.a2023aparty.RequestAndFeedback.Host.HostViewRequest;
 
 public class HostHome extends AppCompatActivity implements SensorEventListener {
 
@@ -55,11 +57,42 @@ public class HostHome extends AppCompatActivity implements SensorEventListener {
             lightTextView.setText("No light sensor found");
         }
 
-
         buttonMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent a = new Intent(HostHome.this, HostManageInfo.class);
+                startActivity(a);
+            }
+        });
+
+        buttonPartyInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(HostHome.this, HostManageInfo.class);
+                startActivity(a);
+            }
+        });
+
+        buttonPartyFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(HostHome.this, HostFeedback.class);
+                startActivity(a);
+            }
+        });
+
+        buttonListGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(HostHome.this, HostManageInfo.class);
+                startActivity(a);
+            }
+        });
+
+        buttonPartyRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent(HostHome.this, HostViewRequest.class);
                 startActivity(a);
             }
         });
