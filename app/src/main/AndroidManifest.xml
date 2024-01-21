@@ -13,6 +13,21 @@
         android:theme="@style/Theme._2023AParty"
         tools:targetApi="31">
         <activity
+            android:name=".PartyDetailsAndRegistration.User.ScanQr"
+            android:exported="false" />
+        <activity
+            android:name=".PartyDetailsAndRegistration.User.UserAttendConfirmation"
+            android:exported="false" />
+        <activity
+            android:name=".PartyDetailsAndRegistration.User.PartyRegistration"
+            android:exported="false" />
+        <activity
+            android:name=".PartyDetailsAndRegistration.Host.EventDetailHost"
+            android:exported="false" />
+        <activity
+            android:name=".PartyDetailsAndRegistration.User.EventDetail"
+            android:exported="false" />
+        <activity
             android:name=".PartyAndLocationInfo.User.MultiLocationHome"
             android:exported="false" />
         <activity

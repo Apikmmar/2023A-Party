@@ -1,7 +1,5 @@
 package com.example.a2023aparty.DashboardAndHostParty.Host;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -15,14 +13,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.a2023aparty.PartyAndLocationInfo.Host.picLocationInfo;
+import com.example.a2023aparty.PartyDetailsAndRegistration.Host.EventDetailHost;
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.RequestAndFeedback.Host.HostFeedback;
 import com.example.a2023aparty.RequestAndFeedback.Host.HostViewRequest;
 
 public class HostHome extends AppCompatActivity implements SensorEventListener {
 
-    private Button buttonMyProfile, buttonPartyInfo, buttonPartyFeedback, buttonListGuest, buttonPartyRequest, buttonLogout;
+    private Button buttonMyProfile, buttonPartyInfo, buttonPartyFeedback, buttonLocationPIC, buttonListGuest, buttonPartyRequest, buttonLogout;
     private TextView lightTextView;
     private SensorManager sensorManager;
     private Sensor lightSensor;
@@ -39,10 +40,11 @@ public class HostHome extends AppCompatActivity implements SensorEventListener {
         buttonPartyFeedback = findViewById(R.id.managepartyfeedback);
         buttonListGuest = findViewById(R.id.managelistofguest);
         buttonPartyRequest = findViewById(R.id.managepartyrequest);
+        buttonLocationPIC = findViewById(R.id.managelocationpic);
         buttonLogout = findViewById(R.id.backtologin);
 
-
         buttonMyProfile.setBackgroundColor(getResources().getColor(R.color.lightblue));
+        buttonLocationPIC.setBackgroundColor(getResources().getColor(R.color.lightblue));
         buttonPartyInfo.setBackgroundColor(getResources().getColor(R.color.lightblue));
         buttonPartyFeedback.setBackgroundColor(getResources().getColor(R.color.lightblue));
         buttonListGuest.setBackgroundColor(getResources().getColor(R.color.lightblue));
@@ -67,6 +69,14 @@ public class HostHome extends AppCompatActivity implements SensorEventListener {
         });
 
         buttonPartyInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent a = new Intent(HostHome.this, EventDetailHost.class);
+                startActivity(a);
+            }
+        });
+
+        buttonLocationPIC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent a = new Intent(HostHome.this, picLocationInfo.class);

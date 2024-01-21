@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PartyDetailsAndRegistration.Host.EventDetailHost"
+    android:background="@drawable/background_img">
+
+    <Button
+        android:id="@+id/BackEventHost"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/yellowdes"
+        android:text="BACK"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="ABOUT"
+        android:textColor="@color/yellowdes"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextAbout1"
+        android:layout_width="359dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="20dp"
+        android:text="Welcome to the ultimate 2023A New Year Party,  from curated playlists that set the perfect mood to interactive games that add a playful twist to your celebrations, we've got it all. Connect with friends, send virtual toasts, and share your resolutions as you navigate through an intuitive interface that puts the fun at your fingertips."
+        android:textColor="@color/yellowdes"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/TextAbout2"
+        android:layout_width="358dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="60dp"
+        android:text="Get ready to immerse yourself in an unforgettable New Year's extravaganza! Our party application promises an evening filled with high energy, laughter, and shared moments of joy. From lively music playlists to interactive challenges, our app is designed to keep the excitement alive."
+        android:textColor="@color/yellowdes"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextAbout1" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="THEME"
+        android:textColor="@color/yellowdes"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextAbout2" />
+
+    <TextView
+        android:id="@+id/TextTheme"
+        android:layout_width="355dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="20dp"
+        android:text="For a unique and memorable celebration, consider a &quot;Futuristic Glitz and Glam&quot; theme. Encourage users to dress up in futuristic, shimmering attire, combining classic New Year's elegance with a touch of sci-fi flair. Decorate virtual spaces with sparkling lights, digital fireworks, and futuristic visuals to create an immersive atmosphere. This futuristic twist adds a modern edge to the traditional New Year's celebration, making it a visually stunning and cutting-edge experience for everyone involved."
+        android:textColor="@color/yellowdes"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <Button
+        android:id="@+id/UpdateEvent"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/yellowdes"
+        android:text="UPDATE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/UpdateAbout1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Update"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextAbout1" />
+
+    <EditText
+        android:id="@+id/UpdateAbout2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Update "
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextAbout2" />
+
+    <EditText
+        android:id="@+id/UpdateTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Update Theme"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextTheme" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
