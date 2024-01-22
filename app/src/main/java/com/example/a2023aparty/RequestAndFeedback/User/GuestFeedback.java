@@ -2,7 +2,6 @@ package com.example.a2023aparty.RequestAndFeedback.User;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.a2023aparty.DashboardAndHostParty.MainActivity;
 import com.example.a2023aparty.DashboardAndHostParty.User.UserHome;
 import com.example.a2023aparty.Feedback;
 import com.example.a2023aparty.R;
@@ -70,7 +70,7 @@ public class GuestFeedback extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent home=new Intent(GuestFeedback.this, UserHome.class);
+                Intent home=new Intent(GuestFeedback.this,MainActivity.class);
                 startActivity(home);
             }
         });
@@ -133,8 +133,6 @@ public class GuestFeedback extends AppCompatActivity {
             }
         });
 
-        calcAvgRating(expRating,foodRating,musicRating);
-
         feedback=new Feedback();
         myRef= FirebaseDatabase.getInstance().getReference().child("Feedback");
         myRef.addValueEventListener(new ValueEventListener() {
@@ -173,7 +171,7 @@ public class GuestFeedback extends AppCompatActivity {
                     feedback.setExp(Integer.parseInt(Experience));
                     feedback.setFood(Integer.parseInt(Food));
                     feedback.setMusic(Integer.parseInt(Music));
-                    feedback.setAvgRating(avgRating);
+                    //feedback.setAvgRating(avgRating);
                     feedback.setComment(Comment);
 
                     myRef.child(String.valueOf(maxid + 1)).setValue(feedback);
@@ -185,26 +183,10 @@ public class GuestFeedback extends AppCompatActivity {
         });
     }
 
-    private double calcAvgRating(double expRating,double foodRating,double musicRating) {
-        avgRating = (expRating+foodRating+musicRating)/3;
-        return avgRating;
-    }
-
     private void takePicture()
     {
         Intent takePictureIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager())!=null)
-        {
-            startActivityForResult(takePictureIntent,REQUEST_IMAGE_CAPTURE);
-        }
-    }
-
-    protected void onActivityResult(int requestCode,int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            photo.setImageBitmap(imageBitmap);
-        }
+        startActivity(takePictureIntent);
+        //displayPhoto();
     }
 }

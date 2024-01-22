@@ -1,8 +1,5 @@
 package com.example.a2023aparty.RequestAndFeedback.Host;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.a2023aparty.GuestRequest;
 import com.example.a2023aparty.R;
-import com.example.a2023aparty.RequestAndFeedback.RequestList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +42,7 @@ public class HostAddRequest extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back=new Intent(HostAddRequest.this, RequestList.class);
+                Intent back=new Intent(HostAddRequest.this, HostViewRequest.class);
                 startActivity(back);
             }
         });
