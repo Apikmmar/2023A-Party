@@ -1,14 +1,15 @@
 package com.example.a2023aparty.PartyAndLocationInfo.Host;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.a2023aparty.DashboardAndHostParty.Host.HostHome;
 import com.example.a2023aparty.R;
 
 public class picLocationInfo extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class picLocationInfo extends AppCompatActivity {
 
         // Locate the NewEventbutton
         Button newEventButton = findViewById(R.id.NewEventbutton);
+        Button home = findViewById(R.id.button2);
 
         // Set an OnClickListener for the NewEventbutton
         newEventButton.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +44,15 @@ public class picLocationInfo extends AppCompatActivity {
                 Intent intent = new Intent(picLocationInfo.this, AddEvent.class);
 
                 // Start the AddEvent activity
+                startActivity(intent);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start the detailsInfo activity
+                Intent intent = new Intent(picLocationInfo.this, HostHome.class);
                 startActivity(intent);
             }
         });

@@ -3,7 +3,6 @@ package com.example.a2023aparty;
 public class GuestRequest {
     private String name,request,details;
     private int id;
-    private double avgRating;
 
     public GuestRequest() {
     }
@@ -38,13 +37,5 @@ public class GuestRequest {
 
     public void setDetails(String details) {
         this.details = details;
-    }
-
-    public double getAvgRating() {
-        return avgRating;
-    }
-
-    public void setAvgRating(double avgRating) {
-        this.avgRating = avgRating;
     }
 }

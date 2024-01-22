@@ -4,6 +4,17 @@ public class eventInfo {
     private int id;
     private String event, time, locations, date;
 
+    public eventInfo(int id, String event, String time, String locations, String date) {
+        this.id = id;
+        this.event = event;
+        this.time = time;
+        this.locations = locations;
+        this.date = date;
+    }
+
+    public eventInfo() {
+    }
+
     public int getId() {
         return id;
     }

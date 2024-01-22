@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2023aparty.PartyAndLocationInfo.Host.picLocationInfo;
 import com.example.a2023aparty.PartyDetailsAndRegistration.Host.EventDetailHost;
+import com.example.a2023aparty.PartyDetailsAndRegistration.Host.GuestLists;
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.RequestAndFeedback.Host.HostFeedback;
 import com.example.a2023aparty.RequestAndFeedback.Host.HostViewRequest;
@@ -95,7 +96,7 @@ public class HostHome extends AppCompatActivity implements SensorEventListener {
         buttonListGuest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent a = new Intent(HostHome.this, HostManageInfo.class);
+                Intent a = new Intent(HostHome.this, GuestLists.class);
                 startActivity(a);
             }
         });

@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.a2023aparty.DashboardAndHostParty.MainActivity;
 import com.example.a2023aparty.PartyAndLocationInfo.User.MultiLocationHome;
 import com.example.a2023aparty.PartyDetailsAndRegistration.User.EventDetail;
-import com.example.a2023aparty.PartyDetailsAndRegistration.User.UserAttendConfirmation;
+import com.example.a2023aparty.PartyDetailsAndRegistration.User.PartyRegistration;
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.RequestAndFeedback.User.GuestFeedback;
 
@@ -69,7 +69,7 @@ public class UserHome extends AppCompatActivity implements SensorEventListener {
         buttonRegParty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent a = new Intent(UserHome.this, UserAttendConfirmation.class);
+                Intent a = new Intent(UserHome.this, PartyRegistration.class);
                 startActivity(a);
             }
         });

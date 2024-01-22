@@ -10,23 +10,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.a2023aparty.eventInfo;
 import com.example.a2023aparty.R;
+import com.example.a2023aparty.eventInfo;
 
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>{
 
-    private Context context;
-    private ArrayList<eventInfo> eventInfoList;
+    private final Context context;
+    private final ArrayList<eventInfo> eventInfoList;
 
     public CustomAdapter(Context context, ArrayList<eventInfo> p) {
         this.context = context;
-        this.eventInfoList = new ArrayList<>();  // Create a new ArrayList of eventInfo
+        this.eventInfoList = new ArrayList<>();
 
-        // Convert detailsInfo to eventInfo and add to the eventInfoList
         for (eventInfo eventInfo : p) {
             eventInfo event = new eventInfo();
+            event.setId(eventInfo.getId());  // Include the ID
             event.setEvent(eventInfo.getEvent());
             event.setTime(eventInfo.getTime());
             event.setLocations(eventInfo.getLocations());
@@ -45,8 +45,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
-        eventInfo eventInfo = this.eventInfoList.get(position);
+    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, final int position) {
+        final eventInfo eventInfo = this.eventInfoList.get(position);
         holder.id.setText(String.valueOf(eventInfo.getId()));
         holder.events.setText(eventInfo.getEvent());
         holder.time.setText(String.valueOf(eventInfo.getTime()));

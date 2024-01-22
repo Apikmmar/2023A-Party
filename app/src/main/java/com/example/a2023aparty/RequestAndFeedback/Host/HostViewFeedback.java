@@ -1,7 +1,5 @@
 package com.example.a2023aparty.RequestAndFeedback.Host;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2023aparty.Feedback;
 import com.example.a2023aparty.R;
@@ -32,7 +32,6 @@ public class HostViewFeedback extends AppCompatActivity {
         expView=findViewById(R.id.exp);
         foodView=findViewById(R.id.food);
         musicView=findViewById(R.id.music);
-        avgRatingView=findViewById(R.id.avgRating);
         commentView=findViewById(R.id.comment);
         backBtn=findViewById(R.id.button1);
 
@@ -58,14 +57,12 @@ public class HostViewFeedback extends AppCompatActivity {
             Exp=getIntent().getStringExtra("exp");
             Food=getIntent().getStringExtra("food");
             Music=getIntent().getStringExtra("music");
-            AvgRating=getIntent().getStringExtra("avgRating");
             Comment=getIntent().getStringExtra("comment");
 
             nameView.setText(Name);
             expView.setText(Exp);
             foodView.setText(Food);
             musicView.setText(Music);
-            avgRatingView.setText(AvgRating);
             commentView.setText(Comment);
         }
         else

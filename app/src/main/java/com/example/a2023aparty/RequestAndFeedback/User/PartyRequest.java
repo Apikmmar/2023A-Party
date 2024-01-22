@@ -1,8 +1,5 @@
 package com.example.a2023aparty.RequestAndFeedback.User;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.a2023aparty.DashboardAndHostParty.MainActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.a2023aparty.GuestRequest;
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.RequestAndFeedback.RequestList;
+import com.example.a2023aparty.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class PartyRequest extends AppCompatActivity {
 
     private Button back,skip,submit;
-    private EditText request,details;
+    private EditText request,details, userName;
     int maxid;
 
     GuestRequest guestRequest;
@@ -42,11 +42,12 @@ public class PartyRequest extends AppCompatActivity {
         submit = findViewById(R.id.submit);
         request = findViewById(R.id.request);
         details = findViewById(R.id.details);
+        userName = findViewById(R.id.nameuser);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back=new Intent(PartyRequest.this, MainActivity.class);
+                Intent back=new Intent(PartyRequest.this, User.class);
                 startActivity(back);
             }
         });
@@ -73,6 +74,7 @@ public class PartyRequest extends AppCompatActivity {
             public void onClick(View v) {
                 String Request = request.getText().toString();
                 String Details = details.getText().toString();
+                String GuestName = userName.getText().toString();
 
                 if (TextUtils.isEmpty(Request))
                 {
@@ -86,6 +88,7 @@ public class PartyRequest extends AppCompatActivity {
                     // data to our database.
                     guestRequest.setId(maxid + 1);
                     guestRequest.setRequest(Request);
+                    guestRequest.setName(GuestName);
                     guestRequest.setDetails(Details);
                     myRef.child(String.valueOf(maxid + 1)).setValue(guestRequest);
                     Toast.makeText(PartyRequest.this, "Request sent!", Toast.LENGTH_SHORT).show();

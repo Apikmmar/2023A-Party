@@ -1,14 +1,16 @@
 package com.example.a2023aparty.PartyAndLocationInfo.Host;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.eventInfo;
@@ -20,26 +22,29 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AddEvent extends AppCompatActivity {
 
-    EditText editTextevents, editTextTime, editTextLocations, editTextDate;
-    Button buttonAdd,buttonView;
+    private EditText editTextevents, editTextTime, editTextLocations, editTextDate;
+    private Button buttonAdd, buttonView;
+
+    com.example.a2023aparty.eventInfo eventInfo;
 
     DatabaseReference myRef;
     int maxid;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
-        buttonAdd=(Button)findViewById(R.id.buttonAdd);
-        buttonView=(Button)findViewById(R.id.buttonView);
-        editTextevents=(EditText)findViewById(R.id.editTextEvents);
-        editTextDate=(EditText)findViewById(R.id.editTextDate);
-        editTextLocations=(EditText)findViewById(R.id.editTextLocations);
-        editTextTime=(EditText)findViewById(R.id.editTextTime);
+        buttonAdd = findViewById(R.id.buttonAdd);
+        buttonView = findViewById(R.id.buttonView);
+        editTextevents = findViewById(R.id.editTextEvents);
+        editTextDate = findViewById(R.id.editTextDate);
+        editTextLocations = findViewById(R.id.editTextLocations);
+        editTextTime = findViewById(R.id.editTextTime);
 
-        eventInfo eventInfo = new eventInfo();
-        myRef= FirebaseDatabase.getInstance().getReference().child("detailsInfo");
+        eventInfo = new eventInfo();
+        myRef = FirebaseDatabase.getInstance().getReference().child("detailsInfo");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -55,27 +60,39 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
-
+        // AddEvent.java
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventInfo.setId(maxid+1);
-                eventInfo.setEvent(String.valueOf(editTextevents.getText().toString()));
-                eventInfo.setTime(String.valueOf(editTextTime.getText().toString()));
-                eventInfo.setLocations(String.valueOf(editTextLocations.getText().toString()));
-                eventInfo.setDate(String.valueOf(editTextDate.getText().toString()));
-                myRef.push().setValue(eventInfo);
-                Toast.makeText(AddEvent.this, "data inserted successfully", Toast.LENGTH_SHORT).show();
+                String editTexteventsText = editTextevents.getText().toString();
+                String editTextTimeText = editTextTime.getText().toString();
+                String editTextLocationsText = editTextLocations.getText().toString();
+                String editTextDateText = editTextDate.getText().toString();
 
-
+                if (TextUtils.isEmpty(editTexteventsText)) {
+                    Toast.makeText(AddEvent.this, "Please add an event.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Use the existing ID for updating
+                    int newId = maxid + 1;
+                    eventInfo.setId(newId);
+                    eventInfo.setEvent(editTexteventsText);
+                    eventInfo.setTime(editTextTimeText);
+                    eventInfo.setLocations(editTextLocationsText);
+                    eventInfo.setDate(editTextDateText);
+                    myRef.child(String.valueOf(newId)).setValue(eventInfo);
+                    Toast.makeText(AddEvent.this, "Event Added!!", Toast.LENGTH_SHORT).show();
+                    Intent list = new Intent(AddEvent.this, DisplayEvent.class);
+                    startActivity(list);
+                }
             }
         });
 
-        buttonView=(Button)findViewById(R.id.buttonView);
+
+        buttonView = findViewById(R.id.buttonView);
         buttonView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(AddEvent.this, DisplayEvent.class);
+                Intent intent = new Intent(AddEvent.this, DisplayEvent.class);
                 startActivity(intent);
             }
         });

@@ -1,6 +1,10 @@
 package com.example.a2023aparty.PartyAndLocationInfo.Host;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +29,9 @@ public class DisplayEvent extends AppCompatActivity {
     ArrayList<eventInfo> userData;  // Change the type to ArrayList<eventInfo>
     DatabaseReference myRef;
 
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +45,8 @@ public class DisplayEvent extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userData = new ArrayList<>();
-                for (DataSnapshot item : dataSnapshot.getChildren()) {
+                for (DataSnapshot item : dataSnapshot.getChildren())
+                {
                     eventInfo p = item.getValue(eventInfo.class);
                     userData.add(p);
                 }
@@ -49,6 +57,17 @@ public class DisplayEvent extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(DisplayEvent.this, "Something is wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Button buttonReturn = findViewById(R.id.buttonReturn);
+
+        buttonReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start the detailsInfo activity
+                Intent intent = new Intent(DisplayEvent.this, picLocationInfo.class);
+                startActivity(intent);
             }
         });
     }

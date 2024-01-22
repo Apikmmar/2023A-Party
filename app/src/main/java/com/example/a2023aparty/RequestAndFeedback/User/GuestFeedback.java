@@ -186,7 +186,7 @@ public class GuestFeedback extends AppCompatActivity {
     private void takePicture()
     {
         Intent takePictureIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivity(takePictureIntent);
+        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         //displayPhoto();
     }
 }
