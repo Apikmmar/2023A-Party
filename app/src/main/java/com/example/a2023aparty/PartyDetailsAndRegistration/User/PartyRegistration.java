@@ -1,35 +1,30 @@
 package com.example.a2023aparty.PartyDetailsAndRegistration.User;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.a2023aparty.DashboardAndHostParty.User.UserHome;
 import com.example.a2023aparty.R;
 import com.example.a2023aparty.RequestAndFeedback.User.PartyRequest;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.a2023aparty.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class PartyRegistration extends AppCompatActivity {
 
-    TextView textHaveAccount;
-    Button RegisterButton;
+    private EditText Name, Email, Phone;
+    private Button BackRegisterButton, RegisterButton, AttendButton;
 
-    private FirebaseAuth mAuth;
-    private ProgressDialog mLoadingBar;
-
-    private EditText Username,Email,Password,ConfirmPassword;
-
+    // Firebase
+    private DatabaseReference myRef;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -37,81 +32,95 @@ public class PartyRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_party_registration);
 
+        Name = findViewById(R.id.Name);
+        Email = findViewById(R.id.Email);
+        Phone = findViewById(R.id.Phone);
 
-        Username=findViewById(R.id.Username);
-        Email=findViewById(R.id.Email);
-        Password=findViewById(R.id.Password);
-        ConfirmPassword=findViewById(R.id.ConfirmPassword);
-
-
-        mAuth=FirebaseAuth.getInstance();
-        mLoadingBar= new ProgressDialog(PartyRegistration.this);
-
-        RegisterButton=findViewById(R.id.RegisterButton);
-        RegisterButton.setOnClickListener(new View.OnClickListener() {
+        BackRegisterButton=findViewById(R.id.BackRegisterButton);
+        BackRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkCredentials();
+                startActivity(new Intent(PartyRegistration.this, UserHome.class));
             }
         });
 
 
+        AttendButton=findViewById(R.id.AttendButton);
+        AttendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PartyRegistration.this, UserAttendConfirmation.class));
+            }
+        });
 
-    }
 
-    private void checkCredentials() {
-        String username=Username.getText().toString();
-        String email=Email.getText().toString();
-        String password=Password.getText().toString();
-        String confirmpassword=ConfirmPassword.getText().toString();
+        RegisterButton = findViewById(R.id.RegisterButton);
 
-        if (username.isEmpty() || username.length()<5)
-        {
-            showError(Username,"Username is not Valid");
-        }
-        else if (email.isEmpty() || !email.contains("@"))
-        {
-            showError(Email,"Email is not Valid");
-        }
-        else if (password.isEmpty() || password.length()<8)
-        {
-            showError(Password,"Password is not Valid");
-        }
-        else if (confirmpassword.isEmpty() || !confirmpassword.equals(password))
-        {
-            showError(ConfirmPassword,"Password does not match");
-        }
-        else
-        {
-            mLoadingBar.setTitle("Registration");
-            mLoadingBar.setMessage("Registration on the way");
-            mLoadingBar.setCanceledOnTouchOutside(false);
-            mLoadingBar.show();
+        // Initialize Firebase
+        myRef = FirebaseDatabase.getInstance().getReference();
 
-            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
+        // Set click listener for the registration button
+        RegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get user input
+                String userName = Name.getText().toString().trim();
+                String userEmail = Email.getText().toString().trim();
+                String userPhone = Phone.getText().toString().trim();
 
-                    if (task.isSuccessful())
-                    {
-                        Toast.makeText(PartyRegistration.this, "Register Successful", Toast.LENGTH_SHORT).show();
-
-                        mLoadingBar.dismiss();
-                        Intent intent = new Intent(PartyRegistration.this, PartyRequest.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
-                    else
-                    {
-                        Toast.makeText(PartyRegistration.this,task.getException().toString(), Toast.LENGTH_SHORT).show();
-                    }
+                // Validate the inputs
+                if (userName.isEmpty()) {
+                    showError(Name,"Please Enter your name");
                 }
-            });
-        }
+                else if (userEmail.isEmpty() || !userEmail.contains("@"))
+                {
+                    showError(Email,"Email must contain '@'");
+                }
+                else if (userPhone.isEmpty() || userPhone.length()<10 || userPhone.length()>11)
+                {
+                    showError(Phone,"Enter a Phone Number");
+                }
+
+                else {
+                    try {
+                        int userInput = Integer.parseInt(userPhone);
+                        // Handle the valid input (userInput) here
+
+                        // Call a method to save user details to Firebase
+                        saveUserDetails(userName, userEmail, userPhone);
+                        startActivity(new Intent(PartyRegistration.this, PartyRequest.class));
+
+                    } catch (NumberFormatException e) {
+                        // Handle the case where the input is not a valid integer
+                        showError(Phone,"Only Enter Numbers");
+                    }
+
+
+                }
+            }
+        });
     }
+
 
     private void showError(EditText input, String s) {
         input.setError(s);
         input.requestFocus();
     }
+
+
+    // Method to save user details to Firebase Realtime Database
+    private void saveUserDetails(String name, String email, String phone) {
+        // Create a unique key for the user
+        String userId = myRef.child("users").push().getKey();
+
+        // Create a User object with the provided details
+        User user = new User(name, email, phone);
+
+        // Save the user details to the database
+        myRef.child("users").child(userId).setValue(user);
+
+        // Display success message
+        Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
+    }
 }
+

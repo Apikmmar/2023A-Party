@@ -9,7 +9,6 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.a2023aparty.DashboardAndHostParty.User.UserHome;
 import com.example.a2023aparty.R;
 
 public class UserAttendConfirmation extends AppCompatActivity {
@@ -34,7 +33,7 @@ public class UserAttendConfirmation extends AppCompatActivity {
         BackAttend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserAttendConfirmation.this, UserHome.class));
+                startActivity(new Intent(UserAttendConfirmation.this, PartyRegistration.class));
             }
         });
 
